@@ -1,9 +1,12 @@
 <!-- アカウント管理画面です。こちらからパスワード変更、新規登録、アカウント削除機能にアクセスできます。 -->
 <?php
 session_start();
-$mode = $_POST['dark'];
-$_SESSION["mode"] = $mode;
-
+if (isset($_POST['dark'])) {
+    $mode = $_POST['dark'];
+}
+if (isset($mode)) {
+    $_SESSION["mode"] = $mode;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

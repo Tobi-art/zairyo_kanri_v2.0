@@ -14,6 +14,7 @@
 <body>
     <header>
         <?PHP
+        session_start();
         include('_header.php') ?>
     </header>
     <main>

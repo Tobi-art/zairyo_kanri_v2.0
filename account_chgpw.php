@@ -12,7 +12,9 @@
 
 <body>
     <header>
-        <?php include('_header.php') ?>
+        <?php
+        session_start();
+        include('_header.php') ?>
     </header>
     <main>
         <form action="account_chgpw_act.php" method="post" id='chgpw'>

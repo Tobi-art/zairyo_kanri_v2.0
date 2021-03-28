@@ -7,7 +7,9 @@
 </head>
 
 <body>
-    <?php include('_header.php');
+    <?php
+    session_start();
+    include('_header.php');
     echo ('<script>alert("アカウントを削除すると全てのデータが破棄され、復旧できません！")</script>');
     ?>
     <main>

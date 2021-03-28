@@ -12,7 +12,9 @@
 
 <body>
     <header>
-        <?php include('_header.php') ?>
+        <?php
+        session_start();
+        include('_header.php') ?>
     </header>
     <div class="m-left25px">
         <div class="buttons">
