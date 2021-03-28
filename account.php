@@ -1,4 +1,10 @@
 <!-- アカウント管理画面です。こちらからパスワード変更、新規登録、アカウント削除機能にアクセスできます。 -->
+<?php
+session_start();
+$mode = $_POST['dark'];
+$_SESSION["mode"] = $mode;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +21,13 @@
         <?php include('_header.php') ?>
     </header>
     <main>
+        <div id="dark">
+            <form action="account.php" method="post">
+                <input type="radio" name="dark" id="on" value="CSS/style3.css"><label for="on">dark</label>
+                <input type="radio" name="dark" id="off" value="CSS/style2.css"><label for="off">light</label>
+                <button type="submit">send</button>
+            </form>
+        </div>
         <div id='accounts' style='display: flex; flex-direction: column; padding-top: 5vw'>
             <a href="_logout.php"><button>ログアウト</button></a>
             <a href="account_chgpw.php"><button>パスワード変更</button></a>
