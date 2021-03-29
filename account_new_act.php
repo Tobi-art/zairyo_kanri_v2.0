@@ -3,6 +3,8 @@
 $user = $_POST['user'];
 $pass1 = $_POST['pass1'];
 $pass2 = $_POST['pass2'];
+$tablenm = $_POST['tablenm'];
+$access = $_POST['access'];
 
 //ユーザーネームなし、またはパスワードとパスワード確認欄が一致しないとNGです。
 if ($pass1 != $pass2) {
@@ -13,10 +15,11 @@ if ($pass1 != $pass2) {
 
 include('_conx.php');
 //ユーザーデータベースに新しいユーザーを追加します。
-$sql = 'INSERT INTO user_id (id, user_nm, user_pw, life_flag, indate) VALUES (null, :user, :pass, "0", sysdate())';
+$sql = 'INSERT INTO user_id (id, user_nm, user_pw, u_table) VALUES (null, :user, :pass, :tablenm)';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':user', $user, PDO::PARAM_STR);
 $stmt->bindValue(':pass', $pass1, PDO::PARAM_STR);
+$stmt->bindValue(':tablenm', $tablenm, PDO::PARAM_STR);
 $res = $stmt->execute();
 
 if ($res = false) {
