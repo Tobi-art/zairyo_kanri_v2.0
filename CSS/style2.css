@@ -81,11 +81,6 @@ a:hover {
     height: fit-content;
 }
 
-#byCategory {
-    text-align: left;
-    padding-top: 25px;
-}
-
 table {
     background-color: #DED0FF;
     border-radius: 8px;
@@ -154,7 +149,7 @@ button:hover {
     border: #952125 3px solid;
     background-color: #952125;
     color: whitesmoke;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .btnr:hover {
@@ -164,7 +159,6 @@ button:hover {
 
 .inputForm {
     text-align: left;
-    padding: 2em 10px;
     width: max-content;
 }
 
