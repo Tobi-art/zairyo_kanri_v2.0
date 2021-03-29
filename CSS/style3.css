@@ -176,6 +176,16 @@ label {
     padding: 3px;
 }
 
+#link {
+    font-size: 0.7rem;
+    height: 28px;
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+}
+
 #red {
     color: #952125;
 }

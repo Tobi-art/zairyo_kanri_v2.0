@@ -22,6 +22,7 @@ $val = $stmt->fetch();
 if ($val != '') {
     $_SESSION['chk_ssid'] = session_id();
     $_SESSION['user_nm'] = $val['user_nm'];
+    $_SESSION['u_table'] = $val['u_table'];
 
     header('Location: home.php');
 } else {

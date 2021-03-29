@@ -21,7 +21,9 @@
             <label for="user">名前</label><input type="text" name="user"><br>
             <label for="pass1">パスワード</label><input type="password" name="pass1"><br>
             <label for="pass2">パスワード再確認</label><input type="password" name="pass2"><br>
-            <label for="dblink">存在しているテーブルに接続しますか。</label><input type="checkbox" name="dblink" id="dblink">
+            <div class="checkbox">
+                <input type="checkbox" name="dblink" id="dblink"><label for="dblink" id="link">存在しているテーブルに接続する。</label>
+            </div>
             <div class="buttons">
                 <button type="submit" form="new_u">登録する</button>
             </div>

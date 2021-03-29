@@ -40,8 +40,8 @@ if (empty($_POST['dblink'])) {
             <input type="hidden" name="pass1" value="<?= $pass1 ?>">
             <input type="hidden" name="pass2" value="<?= $pass2 ?>">
             <label for="tablenm">何方のデータベースに接続しますか。</label><input type="text" name="tablenm" id="tablenm"><br>
-            <label for="tablenm">パスワード</label><input type="text" name="access" id="access"><br><br>
-            <button type="submit">アカウント作成</button>
+            <label for="tablenm">パスワード</label><input type="password" name="access" id="access"><br><br>
+            <button type="submit">連携アカウントを作成</button>
         </form>
     </main>
 
