@@ -22,7 +22,7 @@
         $stmt = $pdo->prepare('SELECT category, count(category) AS CountOf FROM ' . $dbnm . ' GROUP BY category');
         $status = $stmt->execute();
 
-        $count = '<form action="shoppinglist_act.php" method="post">';
+        $count = '<form action="shoppinglist_act.php" method="post" id="printShoppinglist">';
         if ($status == false) {
             exit('Error!');
         } else {
@@ -34,11 +34,13 @@
                 $count .= '(現:' . $result['CountOf'] . ')';
                 $count .= '<br>';
             }
-            $count .= '<button type="submit">ショッピングリスト作成</button></form>';
+            $count .= '<button type="submit" id="printShoppinglist">ショッピングリスト作成</button></form>';
         }
         ?>
         <div class="counts">
             <?= $count ?>
+        </div>
+        <div id="shoppinglist">
         </div>
     </main>
 
