@@ -36,6 +36,7 @@
                     <?php include('_counts.php') ?>
                 </table>
             </div>
+            <a href="shoppinglist.php"><button>ショッピングリスト</button></a>
         </div>
     </main>
     <footer></footer>
