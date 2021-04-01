@@ -34,6 +34,42 @@ for ($i = 0; $i < sizeof($pre) - 1; $i += 3) {
     $sl .= '</td></tr>';
 }
 $sl .= '</table>';
+
+//make sure there is a record for the user 
+$sql2 = 'SELECT * FROM shoppinglist WHERE user_nm = "' . $dbnm . '"';
+$stmt2 = $pdo->prepare($sql2);
+$status2 = $stmt2->execute();
+//in case there is no such user, create a new record
+if ($stmt2->fetch(PDO::FETCH_ASSOC) == '') {
+    $sql3 = 'INSERT INTO shoppinglist (user_nm) VALUES("' . $dbnm . '")';
+    $stmt3 = $pdo->prepare($sql3);
+    $status = $stmt3->execute();
+};
+//then insert data
+$writedata = '"';
+$writedata .= $pre[0] . '", "' . $pre[1] . '"';
+for ($i = 3; $i < sizeof($pre) - 1; $i += 3) {
+    $writedata .= ', "';
+    $writedata .= $pre[$i];
+    $writedata .= '" , "';
+    $writedata .= $pre[$i + 1];
+    $writedata .= '"';
+};
+
+
+$sql3 = 'INSERT INTO shoppinglist VALUES("' . $dbnm . '", ' . $writedata . ')';
+//throws error #1136 - column count doesn't match value count at row 1
+//add NULL values for each empty column before proceeding
+
+var_dump($sql3);
+exit;
+
+$stmt3 = $pdo->prepare($sql3);
+$status = $stmt3->execute();
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
