@@ -17,7 +17,7 @@
         include('_header.php') ?>
     </header>
     <main>
-        <!-- 各カテゴリーに該当するエントリーを数え、その数字を表示します。 -->
+
         <?php
         $stmt = $pdo->prepare('SELECT category, count(category) AS CountOf FROM ' . $dbnm . ' GROUP BY category');
         $status = $stmt->execute();
@@ -42,9 +42,17 @@
             $count .= '<tr><td><br></td><td></td></tr>';
         }
         ?>
-        <table>
-            <div class="counts"><?= $count ?></div>
-        </table>
+        <div class="shoppinglist">
+            <table>
+                <?= $count ?>
+            </table>
+        </div>
+        <div class="shoppinglist">
+            <form action="shoppinglist_act.php" method="post">
+                <input type="number" name="" id="">
+
+            </form>
+        </div>
     </main>
 
 
