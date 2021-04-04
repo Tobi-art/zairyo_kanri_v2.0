@@ -182,6 +182,10 @@ label {
     color: #952125;
 }
 
+.lines {
+    display: flex;
+}
+
 @media (min-width: 1200px) {
     h1 {
         font-size: 95px;

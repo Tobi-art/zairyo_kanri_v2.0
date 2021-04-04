@@ -1,63 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include('_ident.php');
+include('_conx.php');
+
+$stmt = $pdo->prepare('SELECT category, count(category) AS CountOf FROM ' . $dbnm . ' GROUP BY category');
+$status = $stmt->execute();
+
+
+$count = '<form action="shoppinglist_act.php" method="post">';
+$count .= '<div class="lines" style="display: flex"><label for="" style="width: 80px">種類</label>';
+$count .= '<label for="">残存</label>';
+$count .= '<label for="">必要個数</label></div>';
+if ($status == false) {
+    exit('Error!');
+} else {
+    while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $count .= '<div class="lines" style="display: flex">';
+        $count .= '<label for="" style="width: 80px">' . $result['category'] . ':</label>';
+        $count .= '<label for="" style="width: 40px">' . $result['CountOf'] . '</label>';
+        $count .= '<input type="number" name="' . $result['category'] . '" id="" style="width: 50px; height: 30px; margin-top: 15px">';
+        $count .= '</div>';
+    }
+    $count .= '<br><button type="submit">ショッピングリスト作成</button></form>';
+}
+?>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ショッピングリスト</title>
+    <title>ショッピングリスト作成</title>
     <?php include('_stylelink.php') ?>
 </head>
 
 <body>
     <header>
         <?php
-        include('_ident.php');
-        include('_conx.php');
         include('_header.php') ?>
     </header>
     <main>
-
-        <?php
-        $stmt = $pdo->prepare('SELECT category, count(category) AS CountOf FROM ' . $dbnm . ' GROUP BY category');
-        $status = $stmt->execute();
-
-        //テーブルレイアウトの方が見やすいので、テーブルに入れておきます。
-        $count = '<tr><th colspan="2">残存</th></tr>';
-        if ($status == false) {
-            exit('Error!');
-        } else {
-            while ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $count .= '<tr>';
-                $count .= '<td>';
-                $count .= $result['category'];
-                $count .= '</a> ';
-                $count .= '</td>';
-                $count .= '<td>';
-                $count .= $result['CountOf'];
-                $count .= '</a> ';
-                $count .= '</td>';
-                $count .= '</tr>';
-            }
-            $count .= '<tr><td><br></td><td></td></tr>';
-        }
-        ?>
         <div class="shoppinglist">
-            <table>
-                <?= $count ?>
-            </table>
+            <?= $count ?>
         </div>
         <div class="shoppinglist">
-            <form action="shoppinglist_act.php" method="post">
-                <input type="number" name="" id="">
-
-            </form>
         </div>
     </main>
-
-
     <footer></footer>
-
 </body>
 
 </html>
