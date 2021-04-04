@@ -6,6 +6,8 @@ $stmt = $pdo->prepare('SELECT category, count(category) AS CountOf FROM ' . $dbn
 $status = $stmt->execute();
 
 
+
+
 $count = '<form action="shoppinglist_act.php" method="post">';
 $count .= '<div class="lines" style="display: flex"><label for="" style="width: 80px">種類</label>';
 $count .= '<label for="">残存</label>';
@@ -17,7 +19,11 @@ if ($status == false) {
         $count .= '<div class="lines" style="display: flex">';
         $count .= '<label for="" style="width: 80px">' . $result['category'] . ':</label>';
         $count .= '<label for="" style="width: 40px">' . $result['CountOf'] . '</label>';
-        $count .= '<input type="number" name="' . $result['category'] . '" id="" style="width: 50px; height: 30px; margin-top: 15px" value=10>';
+        $sql2 = $pdo->prepare('SELECT qty FROM s_list WHERE dbnm="' . $dbnm . '" AND category="' . $result["category"] . '"');
+        $stmt2 = $sql2->execute();
+        $result2 = $sql2->fetch(PDO::FETCH_ASSOC);
+        $qty = intval($result2["qty"]);
+        $count .= '<input type="number" name="' . $result['category'] . '" id="" style="width: 50px; height: 30px; margin-top: 15px" value=' . $qty . '>';
         $count .= '</div>';
     }
     $count .= '<br><button type="submit">ショッピングリスト作成</button></form>';

@@ -28,8 +28,8 @@ for ($i = 0; $i < sizeof($pre) - 1; $i += 3) {
     $sl .= $pre[$i];
     $a = intval($pre[$i + 1]);
     $b = intval($pre[$i + 2]);
-    $c = $b - $a;
     $sl .= '</td><td>';
+    $c = $b - $a;
     $sl .= $c;
     $sl .= '</td></tr>';
 }
@@ -40,8 +40,7 @@ $sql2 = 'DELETE FROM s_list WHERE dbnm = "' . $dbnm . '"';
 $stmt2 = $pdo->prepare($sql2);
 $status2 = $stmt2->execute();
 
-
-
+//write new data in table
 for ($i = 0; $i < (sizeof($pre) - 1); $i += 3) {
     $sql3 = 'INSERT INTO s_list VALUES("' . $dbnm . '", "' . $pre[$i] . '", "' . $pre[$i + 2] . '")';
     $stmt3 = $pdo->prepare($sql3);
@@ -62,6 +61,11 @@ for ($i = 0; $i < (sizeof($pre) - 1); $i += 3) {
 
 <body>
     <main>
-        <?= $sl ?>
+        <div class="cont">
+            <h3>ショッピングリスト</h3>
+            <br>
+            <?= $sl ?>
+        </div>
     </main>
+    <footer></footer>
 </body>
