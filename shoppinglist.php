@@ -17,7 +17,7 @@ if ($status == false) {
         $count .= '<div class="lines" style="display: flex">';
         $count .= '<label for="" style="width: 80px">' . $result['category'] . ':</label>';
         $count .= '<label for="" style="width: 40px">' . $result['CountOf'] . '</label>';
-        $count .= '<input type="number" name="' . $result['category'] . '" id="" style="width: 50px; height: 30px; margin-top: 15px">';
+        $count .= '<input type="number" name="' . $result['category'] . '" id="" style="width: 50px; height: 30px; margin-top: 15px" value=10>';
         $count .= '</div>';
     }
     $count .= '<br><button type="submit">ショッピングリスト作成</button></form>';
